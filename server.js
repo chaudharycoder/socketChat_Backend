@@ -15,7 +15,8 @@ const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "https://socketchat-3qjd.onrender.com",
-    "https://socketchat-lnrb.onrender.com"
+    "https://socketchat-lnrb.onrender.com",
+    "https://socketchatfrontend01.vercel.app/"
 ];
 
 app.use(cors({
