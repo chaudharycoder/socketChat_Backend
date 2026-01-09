@@ -1,4 +1,4 @@
-import './utilities/executeEnv.js';
+import './env.js'
 import { server, app } from './socket/socket.js';
 import cookieParser from 'cookie-parser';
 import express from 'express';
