@@ -11,25 +11,37 @@ connectDB();
 
 const port = process.env.PORT || 5000;
 //middleware
-const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "https://socketchat-3qjd.onrender.com",
-    "https://socketchat-lnrb.onrender.com",
-    "https://socketchatfrontend01.vercel.app/"
-];
 
-app.use(cors({
+
+
+
+
+
+
+const allowedOrigins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://socketchatfrontend01.vercel.app"
+  ];
+  
+  app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            console.warn(`[CORS] Origin rejected: ${origin}`);
-            callback(null, false);
-        }
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.warn(`[CORS] Origin rejected: ${origin}`);
+        callback(null, false);
+      }
     },
     credentials: true
-}));
+  }));
+  
+
+
+
+
+
+
 app.use(express.json())
 app.use(cookieParser())
 

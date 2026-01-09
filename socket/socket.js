@@ -5,25 +5,45 @@ import express from "express";
 
 const app = express();
 const server = http.createServer(app);
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "https://socketchat-3qjd.onrender.com",
-  "https://socketchat-lnrb.onrender.com"
+  "https://socketchat-lnrb.onrender.com",
+  "https://socketchatfrontend01.vercel.app"
 ];
 
 const io = new Server(server, {
   cors: {
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         console.warn(`[SOCKET] CORS rejected: ${origin}`);
         callback(null, false);
       }
-    }
-  },
+    },
+    credentials: true
+  }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //fixed the CORS error by adding the origin as a string
 //userid <-> socketId (because each id is unique for a user)
 const userSocketmap = {}
